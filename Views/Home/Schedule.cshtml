@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Schedule a Session</h1>
+
+<form>
+    <label>Full Name:</label>
+    <input />
+    <br />
+    <label>Hourly Rate: $</label>
+    <input type="text" id="hourlyRate" value="50" readonly />
+    <br />
+    <label for="numSessions">Number of Sessions</label>
+    <input id="numSessions" />
+    <p>(Each session is one hour)</p>
+    <br />
+    <label>Do you have experience with gymnastics/tricking/flipping?</label>
+    <select id="experience">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <button type="button" id="calculateTotal">Calculate Total</button>
+    <br />
+    <p id="totalCostDisplay"></p>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#calculateTotal').click(function () {
+            var hourlyRate = parseFloat($('#hourlyRate').val());
+            var numSessions = parseInt($('#numSessions').val());
+            var totalCost = hourlyRate * numSessions;
+
+            if (!isNaN(numSessions) && numSessions > 0) {
+                $('#totalCostDisplay').text('Total Cost: $' + totalCost.toFixed(2));
+            }
+            else { 
+                alert("Try putting an actual number in the box thank you very much")
+            }
+        });
+    });
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/site.js"></script>
